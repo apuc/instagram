@@ -23,7 +23,7 @@ class UpdateForm extends Model
 
         $this->accounts = ArrayHelper::map(InstAccounts::find()->asArray()->all(),'id','username');
 
-        $this->pub_date = date("d-m-Y",$post->pub_date);
+        $this->pub_date = date("d-m-Y H:i:s",$post->pub_date);
         $this->caption = $post->caption;
         $this->account_id = $post->account_id;
         $this->photo = UploadedFile::getInstanceByName('post_photo');

@@ -54,13 +54,28 @@ class InstPosts extends \yii\db\ActiveRecord
 
     public function getPublicationDate()
     {
-        $k = date('d.m.Y H:i:s', $this->pub_date)."  HHHH  ".date('d.m.Y H:i:s');
-        return $k;
+        return date('d.m.Y H:i:s', $this->pub_date);
     }
 
     public function getImagePath()
     {
        return Yii::getAlias("@backend/web/uploads/instagram/").$this->photo;
+    }
+
+    public function getAccount()
+    {
+        return $this->hasOne(InstAccounts::className(),['id'=>'account_id']);
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'photo' => 'Фото',
+            'caption' => 'Описание',
+            'pub_date' => 'Дата публикации',
+            'status' => 'Статус',
+        ];
     }
 
 }

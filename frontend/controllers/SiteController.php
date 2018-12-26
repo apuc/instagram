@@ -73,8 +73,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $publications = InstPosts::find()->where(['status'=>InstPosts::WAITING])->andWhere(['<','pub_date',time()])->all();
-        var_dump($publications);
         return $this->render('index');
     }
 
