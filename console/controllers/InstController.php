@@ -21,10 +21,11 @@ class InstController extends Controller
 
         foreach ($publications as $publication)
         {
-            $photo = new InstagramPhoto($publication->getImagePath());
-            $inst->timeline->uploadPhoto($photo->getFile(), ['caption' => $publication->caption]);
-            $publication->status = InstPosts::PUBLISHED;
-            $publication->save();
+            var_dump($publication->photo);
+//            $photo = new InstagramPhoto($publication->getImagePath());
+//            $inst->timeline->uploadPhoto($photo->getFile(), ['caption' => $publication->caption]);
+//            $publication->status = InstPosts::PUBLISHED;
+//            $publication->save();
         }
 
         $this->stdout("Complete!\n",Console::FG_GREEN);

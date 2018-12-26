@@ -54,7 +54,8 @@ class InstPosts extends \yii\db\ActiveRecord
 
     public function getPublicationDate()
     {
-        return date('d.m.Y', $this->pub_date);
+        $k = date('d.m.Y H:i:s', $this->pub_date)."  HHHH  ".date('d.m.Y H:i:s');
+        return $k;
     }
 
     public function getImagePath()

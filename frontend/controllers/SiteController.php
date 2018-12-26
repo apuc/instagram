@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\InstPosts;
 
 /**
  * Site controller
@@ -72,6 +73,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $publications = InstPosts::find()->where(['status'=>InstPosts::WAITING])->andWhere(['<','pub_date',time()])->all();
+        var_dump($publications);
         return $this->render('index');
     }
 
