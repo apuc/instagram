@@ -15,6 +15,11 @@ class InstController extends Controller
     {
         $publications = InstPosts::find()->where(['status'=>InstPosts::WAITING])->andWhere(['<','pub_date',time()])->all();
 
+        if(empty($publications))
+        {
+            return false;
+        }
+
         $inst = new Instagram(false,false);
 
         foreach ($publications as $publication)
